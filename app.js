@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const homeRouter = require('./routes/home.route');
 const adminRouter = require('./routes/admin.route');
+const productRouter = require('./routes/product.route');
 
 // declaration
 const PORT = process.env.PORT || 3000;
@@ -16,7 +17,8 @@ app.use(express.static(path.join(__dirname,'images')));
 app.set('view engine','ejs');
 app.set('views','views');
 
-app.use('/',homeRouter);
+app.use(homeRouter);
+app.use(productRouter);
 app.use('/admin',adminRouter);
 
 app.listen(PORT,

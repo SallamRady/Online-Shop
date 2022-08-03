@@ -1,0 +1,29 @@
+<%# import header file%> <%- include('components/Header') %> <%# import navbar
+file%> <%- include('components/Navbar') %> <%# import Home file%>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <img
+        src="/<%= product.image %> "
+        width="90%"
+        alt="<%= product.name %> "
+      />
+    </div>
+    <div class="col-12 col-md-6 col-lg-8">
+      <h3>Product Name : <%= product.name %></h3>
+      <h5>Product Price : <%= product.price %> EGP</h5>
+      <p>Product Description : <%= product.description %></p>
+      <form
+        class="d-flex justify-content- align-items-center justify-content-between"
+        action="/cart"
+        method="post"
+      >
+        <label>Amount</label>
+        <input type="number" name="amount" value="1" class="form-control m-1" />
+        <input type="submit" value="Add To Card" class="btn btn-info m-1" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<%# import footer file%> <%- include('components/Footer') %>
