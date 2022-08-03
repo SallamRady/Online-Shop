@@ -19,6 +19,7 @@ module.exports.getHome = (req, res, next) => {
   myPromise.then((products) => {
       res.render("index", {
         products: products,
+        category:category
       });
     })
     .catch((err) => console.log("error in show home page"));

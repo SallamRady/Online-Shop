@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
     <div class="col col-12">
       <form class="d-flex" action="/" method="get">
@@ -7,10 +7,10 @@
           class="form-select w-25 mr-3"
           aria-label="Select Category"
         >
-          <option value="all">All Products</option>
-          <option value="clothes">Clothes</option>
-          <option value="phones">Phones</option>
-          <option value="computers">Computers</option>
+          <option value="all" <%= category == 'all'?'selected':'' %> >All Products</option>
+          <option value="clothes" <%= category == 'clothes'?'selected':'' %> >Clothes</option>
+          <option value="phones" <%= category == 'phones'?'selected':'' %> >Phones</option>
+          <option value="computers" <%= category == 'computers'?'selected':'' %> >Computers</option>
         </select>
         <input type="submit" value="Filter" class="btn btn-info ml-2" />
       </form>
@@ -20,8 +20,15 @@
           <div class="card p-2 m-2" style="width: 350;" >
             <img src="<%= product.image %>" width="90%" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title"><%= product.name %></h5>
-              <a href="#" class="btn btn-primary">Product Details</a>
+              <h5 class="card-title">
+                <a href="/product/<%= product.id %> " target="_self" class="text-decoration-none"><%= product.name %></a>
+              </h5>
+              <h6>Price : <%= product.price %> EGP</h6>
+              <hr/>
+              <form class="d-flex justify-content- align-items-center justify-content-between" action="/cart" method="post">
+                <input type="number" name="amount" value='1' class="form-control m-1"/>
+                <input type="submit" value="Add To Card" class="btn btn-info m-1"/>
+              </form>
             </div>
           </div>
         </div>
