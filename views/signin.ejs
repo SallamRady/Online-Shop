@@ -1,0 +1,23 @@
+<%# import header file%> 
+<%- include('components/Header') %> 
+<%# import navbar file%> 
+<%- include('components/Navbar') %> 
+
+
+<div class="container d-flex justify-content-center align-items-center flex-column mt-3">
+    <h2>SignIn</h2>
+    <form action="/signin" method="post">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+            <label for="floatingInputEmail">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <input type="submit" value="Sign In" class="btn btn-info"/>
+    </form>
+</div>
+
+<%# import footer file%> 
+<%- include('components/Footer') %>
