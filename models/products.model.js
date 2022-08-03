@@ -75,12 +75,34 @@ module.exports.getProductsById = (id)=>{
     mongoose
       .connect(DB_URL, { useNewUrlParser: true })
       .then(() => {
+        console.log(id);
         Product.findById(id)
           .then((data) => {
             mongoose.disconnect();
             resolve(data);
           })
-          .catch((err) => reject(err));
+          .catch((err) => {
+            reject(err)
+          });
+      })
+      .catch((err) => reject(err));
+  });
+}
+
+module.exports.getFirstProduct = ()=>{
+  /*return our custom promise*/
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URL, { useNewUrlParser: true })
+      .then(() => {
+        Product.findOne({})
+          .then((data) => {
+            mongoose.disconnect();
+            resolve(data);
+          })
+          .catch((err) => {
+            reject(err)
+          });
       })
       .catch((err) => reject(err));
   });

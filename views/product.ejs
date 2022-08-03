@@ -1,7 +1,13 @@
-<%# import header file%> <%- include('components/Header') %> <%# import navbar
-file%> <%- include('components/Navbar') %> <%# import Home file%>
+<%# import header file%> 
+<%- include('components/Header') %> 
+<%# import navbar file%> 
+<%- include('components/Navbar') %> 
+
 <div class="container mt-3">
   <div class="row">
+    <% if(!product){ %> 
+      <%- include('components/Alert',{message:'There is No Product matches this id'}) %> 
+    <% }else{ %> 
     <div class="col-12 col-md-6 col-lg-4">
       <img
         src="/<%= product.image %> "
@@ -23,6 +29,7 @@ file%> <%- include('components/Navbar') %> <%# import Home file%>
         <input type="submit" value="Add To Card" class="btn btn-info m-1" />
       </form>
     </div>
+    <% } %> 
   </div>
 </div>
 
