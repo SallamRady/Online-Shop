@@ -3,6 +3,7 @@ const path = require('path');
 const homeRouter = require('./routes/home.route');
 const adminRouter = require('./routes/admin.route');
 const productRouter = require('./routes/product.route');
+const authRouter = require('./routes/auth.route');
 
 // declaration
 const PORT = process.env.PORT || 3000;
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname,'images')));
 app.set('view engine','ejs');
 app.set('views','views');
 
+app.use(authRouter);
 app.use(homeRouter);
 app.use('/product',productRouter);
 app.use('/admin',adminRouter);
