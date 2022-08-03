@@ -18,7 +18,7 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 app.use(homeRouter);
-app.use(productRouter);
+app.use('/product',productRouter);
 app.use('/admin',adminRouter);
 
 app.listen(PORT,

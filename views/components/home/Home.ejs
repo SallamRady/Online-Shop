@@ -15,6 +15,9 @@
         <input type="submit" value="Filter" class="btn btn-info ml-2" />
       </form>
     </div>
+    <% if(products.length == 0) { %>
+      <%- include('../Alert',{message:'There is No Products :('}) %> 
+    <% }else{ %>  
       <% for (const product of products) {%>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
           <div class="card p-2 m-2" style="width: 350;" >
@@ -32,7 +35,7 @@
             </div>
           </div>
         </div>
-      <%} %>
+      <%} } %>
     
   </div>
 </div>
