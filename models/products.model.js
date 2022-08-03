@@ -68,3 +68,20 @@ module.exports.postSaveProduct = (poduct) => {
       .catch((err) => reject(err));
   });
 };
+
+module.exports.getProductsById = (id)=>{
+  /*return our custom promise*/
+  return new Promise((resolve, reject) => {
+    mongoose
+      .connect(DB_URL, { useNewUrlParser: true })
+      .then(() => {
+        Product.findById(id)
+          .then((data) => {
+            mongoose.disconnect();
+            resolve(data);
+          })
+          .catch((err) => reject(err));
+      })
+      .catch((err) => reject(err));
+  });
+}
