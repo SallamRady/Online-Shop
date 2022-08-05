@@ -6,7 +6,8 @@ module.exports.getSignUp = (req, res, next) => {
     userNameError:req.flash('userNameError')[0],
     emailError:req.flash('emailError')[0],
     passwordError:req.flash('passwordError')[0],
-    confirmPasswordError:req.flash('confirmPasswordError')[0]
+    confirmPasswordError:req.flash('confirmPasswordError')[0],
+    isAuth:false
   });
 };
 
@@ -14,6 +15,7 @@ module.exports.postSignUp = (req, res, next) => {
   //check if email is exists or not
   //exists => throw error
   //else=>create new user
+  
   let validationErrors = validationResult(req).array();
   if (validationErrors.length == 0) {
     userModel
@@ -22,9 +24,11 @@ module.exports.postSignUp = (req, res, next) => {
         res.redirect("/signin");
       })
       .catch((err) => {
+        console.log(err)
         res.redirect("/signup");
       });
   }else{
+    console.log('point 1');
     let errorMessages = new Map();
     for(let err of validationErrors){
         errorMessages[err.param] = err.msg;
@@ -41,7 +45,8 @@ module.exports.getSignIn = (req, res, next) => {
   res.render("signin", {
     loginError: req.flash("loginError")[0],
     emailError:req.flash("emailError")[0],
-    passwordError:req.flash("passwordError")[0]
+    passwordError:req.flash("passwordError")[0],
+    isAuth:false
   });
 };
 

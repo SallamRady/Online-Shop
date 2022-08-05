@@ -19,7 +19,8 @@ module.exports.getHome = (req, res, next) => {
   myPromise.then((products) => {
       res.render("index", {
         products: products,
-        category:category
+        category:category,
+        isAuth:true
       });
     })
     .catch((err) => console.log("error in show home page"));
