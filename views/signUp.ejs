@@ -1,31 +1,65 @@
-<%# import header file%> 
-<%- include('components/Header') %> 
-<%# import navbar file%> 
-<%- include('components/Navbar') %> 
+<%# import header file%> <%- include('components/Header') %> <%# import navbar
+file%> <%- include('components/Navbar') %>
 
-
-<div class="container d-flex justify-content-center align-items-center flex-column mt-3">
-    <h2>SignUp</h2>
-    <form action="/signup" method="post">
-        <div class="form-floating mb-3">
-            <input name="username" type="text" class="form-control" id="floatingInputUserName" placeholder="ex: ali@123">
-            <label for="floatingInputUserName">User Name</label>
-          </div>
-        <div class="form-floating mb-3">
-            <input name="email" type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
-            <label for="floatingInputEmail">Email address</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input name="confirmpassword" type="password" class="form-control" id="floatingConfirmPassword" placeholder="Password">
-            <label for="floatingConfirmPassword">Confirm Password</label>
-          </div>
-          <input type="submit" value="Sign Up" class="btn btn-info"/>
-    </form>
+<div
+  class="container d-flex justify-content-center align-items-center flex-column mt-3"
+>
+  <h2>SignUp</h2>
+  <form action="/signup" method="post">
+    <div class="form-floating mb-3">
+      <input
+        name="username"
+        type="text"
+        class="form-control"
+        id="floatingInputUserName"
+        placeholder="ex: ali@123"
+      />
+      <label for="floatingInputUserName">User Name</label>
+    </div>
+    <% if(userNameError) { %>
+    <small class="text-danger"><%= userNameError %> </small>
+    <% } %>
+    <div class="form-floating mb-3">
+      <input
+        name="email"
+        type="email"
+        class="form-control"
+        id="floatingInputEmail"
+        placeholder="name@example.com"
+      />
+      <label for="floatingInputEmail">Email address</label>
+    </div>
+    <% if(emailError) { %>
+    <small class="text-danger"><%= emailError %> </small>
+    <% } %>
+    <div class="form-floating mb-3">
+      <input
+        name="password"
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+      />
+      <label for="floatingPassword">Password</label>
+    </div>
+    <% if(passwordError) { %>
+    <small class="text-danger"><%= passwordError %> </small>
+    <% } %>
+    <div class="form-floating mb-3">
+      <input
+        name="confirmpassword"
+        type="password"
+        class="form-control"
+        id="floatingConfirmPassword"
+        placeholder="Password"
+      />
+      <label for="floatingConfirmPassword">Confirm Password</label>
+    </div>
+    <% if(confirmPasswordError) { %>
+    <small class="text-danger"><%= confirmPasswordError %> </small><br/><br/>
+    <% } %>
+    <input type="submit" value="Sign Up" class="btn btn-info" />
+  </form>
 </div>
 
-<%# import footer file%> 
-<%- include('components/Footer') %>
+<%# import footer file%> <%- include('components/Footer') %>

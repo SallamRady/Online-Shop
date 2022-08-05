@@ -4,6 +4,7 @@ const homeRouter = require('./routes/home.route');
 const adminRouter = require('./routes/admin.route');
 const productRouter = require('./routes/product.route');
 const authRouter = require('./routes/auth.route');
+const flash  = require('connect-flash');
 
 // declaration
 const PORT = process.env.PORT || 3000;
@@ -13,9 +14,11 @@ const DB_URL = "mongodb://localhost:27017/online-shop";
 const app = express();
 app.use(express.static(path.join(__dirname,'assets')));
 app.use(express.urlencoded({ extended: true }));
+app.use(flash());
 
 // session setting
 const session  = require('express-session');
+const { application } = require('express');
 const SessionStore = require('connect-mongodb-session')(session);
 const Store = new SessionStore({
     uri:DB_URL,
